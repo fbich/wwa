@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+</head>
+<body>
+    <h3>WAS WET ASSE ?</h3>
+    <h2>Liste des courses</h2>
+    Bienvenue mon cher {{ nom }} tu as maintenant {{age}} ans.<br/>
+    {% if age < 18 %}
+        Vous etes mineur
+    {% else %}
+        Vous etes majeur
+    {% endif %}
+    <br/><br/>
+    Vous possedez actuellement le materiel suivant :<br/>
+    {% for element in materielinfo %}
+        - {{ element }}<br/>
+    {% endfor %}
+</body>
+</html>
