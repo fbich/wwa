@@ -5,7 +5,7 @@ from django.http import HttpResponse
 def index(request):
     template = loader.get_template('index.html')
     context = {
-        'nom' : 'Albert', 'age' : '45', 
-        'materielinfo' : {'laptop' , 'Ipad' , 'imprimante'}
+        'nom' : 'Albert', 'age' : '12', 
+        'materielinfo' : {'laptop' , 'Ipad' , 'imprimante' , 'chaise'}
     }
     return HttpResponse(template.render(context, request))

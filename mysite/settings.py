@@ -25,10 +25,19 @@ SECRET_KEY = 'g+qb7m(z%3^z3v^j)wbn&aflzmz4ru=qrk2)&q!f(*as56ze=3'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "127.0.0.1",
+    "locahost",
+    "fbich.eu.pythonanywhere.com",
+]
 
+# Au lancement de "django-admin :
+# Note that only Django core commands are listed as settings are not properly configured 
+#(error: Requested setting INSTALLED_APPS, but settings are not configured. 
+#You must either define the environment variable DJANGO_SETTINGS_MODULE 
+#or call settings.configure() before accessing settings.).
 
-# Application definition
+# Application definition:
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'myapp',
 ]
 
 MIDDLEWARE = [
@@ -102,7 +112,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr'
 
 TIME_ZONE = 'Europe/Paris'
 
