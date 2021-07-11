@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test httpResponse with form</title>
+</head>
+<body style="padding-top: 20px">
+    <form action="/httpresponse/" method="POST">
+        {% csrf_token %}
+        <input type="text" name="username">
+        <input type="submit" name="submit">
+    </form>
+
+</body>
+</html>

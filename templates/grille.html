@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grille</title>
+</head>
+<body>
+    <h5>{{ mytext }}</h5>
+    <h5>{{ globvar }}</h5>
+    <h5>{{ replist }}</h5>
+    <hr>
+    <table>
+        {% for element in globvar %}
+            <tr>
+            {% for col in element %}
+                <td>{{ col }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+    <hr>
+    <h5>Liste de tous les repas</h5>
+    <table>
+        {% for element in replist %}
+            <tr>
+            {% for col in element %}
+                <td>{{ col }}</td>
+            {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

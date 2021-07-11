@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>
+        Contact
+    </title>
+</head>
+
+<!--
+
+<TABLE border=1>
+{% for post in posts %}
+    <TR>
+    <form action="" method="POST">
+      {% csrf_token %}
+      <input type="submit" value="Send"/>
+      <TD>{{ post.titre }}</TD><TD>{{ post.qty }}</TD>
+    </form>
+    </TR>
+{% endfor %}
+</TABLE>
+
+{% block content %} 
+
+<form action="/contact/" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button type="submit", name="save"> Bouton Contact </button>
+</form>
+{% endblock %}
+
+{{form.as_p}}
+
+-->
+
+<p> Welcome {{ myfirstname }}  {{ mydata }}, today is {{today}} : {{globvar}}</p>
+
+<HR>
+
+<form method="POST">
+    
+  <TABLE border=1, cellspacing=0>
+    <TR>
+      <TH width=50>Select</TH>
+      <TH width=150>Titre</TH>
+      <TH width=50>Qty</TH>
+    </TR>
+
+    {% for post in posts %}
+    <TR>
+      <TD><input type="checkbox" name="selected_options" value="v.id"></TD>
+      {% for k,v in post.items %}
+        <TD>{{ v }}</TD>
+      {% endfor %}
+      </TR>
+    {% endfor %}
+
+  </TABLE>
+
+  {% csrf_token %}
+  <input type="submit" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" name="" value="submit">
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="alert alert-success alert-dismissible">
+          <a  class="close" data-dismiss="modal" aria-label="close">&times;</a>
+          <strong>Success!</strong> App information stored Successfully.
+        </div>
+    </div>
+  </div>
+
+</form>
