@@ -11,7 +11,7 @@ import sys
 
 from django import template
 #from pcloud import PyCloud
-from fs import open_fs, opener
+#from fs import open_fs, opener
 
 register = template.Library()
 
