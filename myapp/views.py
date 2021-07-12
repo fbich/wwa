@@ -128,6 +128,7 @@ def index(request):
     #os.path.exists(test_dir)
     #os.path.exists(no_exist_dir)
 
+    '''
     rep_tab2 = lirefic()
     print('dans index :', rep_tab2, '<<<')
     template = loader.get_template('index.html')
@@ -136,6 +137,10 @@ def index(request):
         'replist' : rep_tab2,
         'planlist' : plan_tab,
         'nbing' : nbing,
+    }
+    '''
+    context = {
+        'dummy' : 'this is useless',
     }
         
     return HttpResponse(template.render(context, request))
