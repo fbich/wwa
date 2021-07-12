@@ -34,6 +34,15 @@ password = "Insistt100"
 #imap_url = "imap.sfr.fr"
 #imap_url = "imap.gmail.com"
 
+def home(request):
+    return render(request,'index.html')
+
+def page2(request):
+    return render(request,'page2.html')
+
+def page3(request):
+    return render(request,'page3.html')
+
 #-----------------------------------------------------------------------
 def get_body(msg):
     if msg.is_multipart():

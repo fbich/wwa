@@ -11,6 +11,7 @@
     </head>
     <body>
         <h3>WAS WET ASSE ?</h3>
+
         <hr>
         <form method="post" action="grille.html">
             <p>
@@ -21,8 +22,19 @@
         </form>
 
         <hr>
-
+        <table>
+            <tr>
+                <a href="page2.html">Go to page 2</a>
+            </tr>
+            <tr>
+                <a href="page3.html">Go to page 3</a>
+            </tr>
+            <tr>
+                <a href="{{link}}">WWA index page</a>
+            </tr>
+        </table>
         <hr>
+
         <h5>Liste de tous les ingredients - {{ nbing }}.</h5>
         <table>
             {% for element in inglist %}
