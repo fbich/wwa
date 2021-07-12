@@ -131,7 +131,9 @@ def index(request):
     '''
     rep_tab2 = lirefic()
     print('dans index :', rep_tab2, '<<<')
+    '''
     template = loader.get_template('index.html')
+    '''
     context = {
         'inglist' : myinglist,
         'replist' : rep_tab2,
