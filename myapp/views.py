@@ -28,11 +28,15 @@ import parser
 
 import string
 import parser
+from email import utils
 
 user = "francis.bich@sfr.fr"
 password = "Insistt100"
 #imap_url = "imap.sfr.fr"
 #imap_url = "imap.gmail.com"
+
+datadir = 'https://eu.pythonanywhere.com/user/fbich/files/home/fbich/wwa/static/datafiles'
+infile = datadir + '/WWA_TABLDC1.csv'
 
 def home(request):
     return render(request,'index.html')
@@ -70,6 +74,7 @@ def lirefic():
     global plan_tab
     global myinglist
     MyFilename = 'D:/FBWebDev/waswetasse/templates/static/WWA_TABLDC1.csv'
+    https://eu.pythonanywhere.com/user/fbich/files/home/fbich/wwa/static/datafiles
 
     with open(MyFilename) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=';')
@@ -158,6 +163,10 @@ def saisie(request): # This is mandatory ; I don't know why !
     parser = email.parser.Parser()
     mailbox = poplib.POP3_SSL("pop.sfr.fr",995)
 
+    import os
+    DirExist = os.path.exists(infile)
+    print(' the data file exists ? ', DirExist)
+
     try:
         mailbox.user(user)
         mailbox.pass_(password)
@@ -169,7 +178,7 @@ def saisie(request): # This is mandatory ; I don't know why !
 
             #print("Message %s has %s bytes" % (number, size))
             resp, lines, octets = mailbox.retr(number)
-            print('========================================================================')
+            #print('===')
             #print(lines)
 
             # lines stores each line of the original text of the message
@@ -193,15 +202,24 @@ def saisie(request): # This is mandatory ; I don't know why !
             email_subject = msg.get('Subject')
 
             if email_subject == 'LDC':
-                print('From ' + email_from + ' : ' + email_subject)
+                sent = msg['date']
+                #print(f"Date header: {sent}")
+                #received = msg['Received'][0]
+                #received = received.split(";")[-1]
+                #print(f"Received: {received}")
+                #sent_ts = utils.parsedate(sent)
+                #received_ts = utils.parsedate(received)
+                print('From ' + email_from + sent + ' : ' + email_subject)
                 email_body = get_body(msg)
-                print(email_body)
+                # print(email_body)
                 email_body = msg.get('Body')
-                if listing.is_multipart():
+                if msg.is_multipart():
+                    print("message is multipart")
                     for part in email_body.get_payload():
                         print(part.get_payload())
                 else:
-                    print(email_body.get_payload())
+                    print("message isn't multipart")
+                    print(msg.get_payload())
             
     except poplib.error_proto as exception:
         print("Login failed:", exception)
@@ -211,7 +229,6 @@ def saisie(request): # This is mandatory ; I don't know why !
 
     print('---------------------------------------------------------------------------------------')
     
-
     #print(pc.listfolder(folderid=0))
     #print('---------------------------------------------------------------------------------------')
     #print(pc.listfolder(folderid=5759400854))
