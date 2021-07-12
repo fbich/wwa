@@ -59,12 +59,15 @@ def get_body(msg):
     print(get_body(raw))
 
 #-----------------------------------------------------------------------
+'''
 def lirefic():
+    
     print('debut de lirefic')
     global rep_tab
     global plan_tab
     global myinglist
     MyFilename = 'D:/FBWebDev/waswetasse/templates/static/WWA_TABLDC1.csv'
+
     with open(MyFilename) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=';')
         line_count = 0
@@ -81,14 +84,14 @@ def lirefic():
                 line_count += 1
             else:
                 line_count += 1
-
+    
     print(f'Processed {line_count} lines.')
     plan_tab = copy.deepcopy(rep_tab)
     for r in plan_tab:
         del r[5:]
 
     return rep_tab, plan_tab, myinglist
-
+'''
 #-----------------------------------------------------------------------
 def successpage(request):
 
