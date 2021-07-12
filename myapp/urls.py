@@ -6,8 +6,9 @@ from . import views
 app_name = "myapp"
 
 urlpatterns = [
-	path("contact/", views.contact, name="contact"),
-	path("saisie/", views.saisie, name="saisie"),
+	url("contact", views.contact, name="contact"),
+	path("saisie", views.saisie, name="saisie"),
+	url("grille", views.grille, name="grillen"),
 	url("page2", views.page2, name="webpage2"),
 	url("page3", views.page3, name="webpage3"),
 	url("home", views.home, name="webhome"),

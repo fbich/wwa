@@ -43,6 +43,9 @@ def page2(request):
 def page3(request):
     return render(request,'page3.html')
 
+def grille(request):
+    return render(request,'grille.html')
+
 #-----------------------------------------------------------------------
 def get_body(msg):
     if msg.is_multipart():
