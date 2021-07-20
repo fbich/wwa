@@ -30,6 +30,7 @@ import string
 import parser
 from email import utils
 
+import imaplib
 user = "francis.bich@sfr.fr"
 password = "Insistt100"
 #imap_url = "imap.sfr.fr"
@@ -156,8 +157,28 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 #-----------------------------------------------------------------------
+def get_mail_client(email_address):
+    SMTP_SERVER = "imap.gmail.com"
+    SMTP_PORT = 993
+    
+    password = "13Karabatic&"
+    '''
+    password = ""
+    with open("password.txt", "r") as f:
+        password = f.read().strip()
+    '''
+
+    mail = imaplib.IMAP4_SSL(SMTP_SERVER)
+    mail.login(email_address, password)
+    return mail
+
+#-----------------------------------------------------------------------
 def saisie(request): # This is mandatory ; I don't know why !
 
+    print("coucou")
+    mymail = get_mail_client("francis.bich@gmail.com")
+    print(mymail)
+    '''
     import poplib
     import email.parser
     parser = email.parser.Parser()
@@ -166,7 +187,7 @@ def saisie(request): # This is mandatory ; I don't know why !
     import os
     DirExist = os.path.exists(infile)
     print(' the data file exists ? ', DirExist)
-
+    
     try:
         mailbox.user(user)
         mailbox.pass_(password)
@@ -255,6 +276,7 @@ def saisie(request): # This is mandatory ; I don't know why !
     #    for row in csv_reader:
     #      print(row)
 
+'''
     return HttpResponse(request, "hello world")
 
 #-----------------------------------------------------------------------
